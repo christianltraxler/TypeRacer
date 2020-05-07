@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\TypeRacer.csproj": {}
+    "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\TypeRacer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\TypeRacer.csproj": {
+    "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\TypeRacer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
+        "projectUniqueName": "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
         "projectName": "TypeRacer",
-        "projectPath": "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
-        "packagesPath": "C:\\Users\\Dev_CHT\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\obj\\",
+        "projectPath": "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
+        "packagesPath": "C:\\Users\\traxl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Dev_CHT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\traxl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -51,7 +48,7 @@
             },
             "Selenium.WebDriver.ChromeDriver": {
               "target": "Package",
-              "version": "[79.0.3945.3600, )"
+              "version": "[81.0.4044.13800, )"
             }
           },
           "imports": [

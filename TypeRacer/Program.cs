@@ -8,24 +8,27 @@ namespace TypeRacer
 {
     public static class Program
     {
-        public static readonly TimeSpan DefaultExistsTimeout = TimeSpan.FromSeconds(int.Parse("90"));
-        public static readonly TimeSpan DefaultInteractiveTimeout = TimeSpan.FromSeconds(int.Parse("60"));
-
         static void Main()
         {
+            // Create instnace of ChromeDriver
             IWebDriver driver = new ChromeDriver();
+
+            // Navigate to the TypeRacer Url
             driver.Navigate().GoToUrl("https://play.typeracer.com");
 
             try
             {
-                WaitForElementExists(driver, By.LinkText("Enter a typing race"));
+                // Find and click button to enter race
+                Helper.WaitForElementExists(driver, By.LinkText("Enter a typing race"));
                 IWebElement enter = driver.FindElement(By.LinkText("Enter a typing race"));
                 enter.Click();
+
+                // Play the game
                 PlayGame(driver);
             }
             catch (WebDriverException ex)
             {
-                Console.WriteLine("error1");
+                Console.WriteLine("WebDriver Failed");
                 driver.Close();
             }
         }
@@ -36,102 +39,37 @@ namespace TypeRacer
 
             try
             {
-                WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(1)"));
-                WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(2)"));
-                WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(3)"));
+                // Find the text elements
+                Helper.WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(1)"));
+                Helper.WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(2)"));
+                Helper.WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(3)"));
                 IWebElement firstLetter = driver.FindElement(By.CssSelector("[unselectable='on']:nth-of-type(1)"));
                 IWebElement firstWord = driver.FindElement(By.CssSelector("[unselectable='on']:nth-of-type(2)"));
                 IWebElement rest = driver.FindElement(By.CssSelector("[unselectable='on']:nth-of-type(3)"));
-                text = firstLetter.Text + firstWord.Text + " " + rest.Text;
 
+                // Get the text to be sent
+                text = Helper.GetText(firstLetter.Text + firstWord.Text, rest.Text);
             }
             catch (NoSuchElementException ex)
             {
-                Console.WriteLine("error2");
-                WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(1)"));
-                WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(2)"));
+                // Find the text elements, if there is no separation between first letter and word
+                Helper.WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(1)"));
+                Helper.WaitForElementExists(driver, By.CssSelector("[unselectable='on']:nth-of-type(2)"));
                 IWebElement firstLetter = driver.FindElement(By.CssSelector("[unselectable='on']:nth-of-type(1)"));
                 IWebElement rest = driver.FindElement(By.CssSelector("[unselectable='on']:nth-of-type(2)"));
-                text = firstLetter.Text + " " + rest.Text;
+
+                // Get the text to be sent
+                text = Helper.GetText(firstLetter.Text, rest.Text);
+                
             }
             finally
             {
+                // Write the text to the Console
                 Console.WriteLine(text);
             }
-            WaitAndSendKeys(driver, By.ClassName("txtInput"), text);
+            // Send the keys to the text input
+            Helper.WaitAndSendKeys(driver, By.ClassName("txtInput"), text);
 
-        }
-
-        public static IWebElement WaitForElementExists(this IWebDriver driver, By locator)
-        {
-            WebDriverWait waitForElement = new WebDriverWait(driver, DefaultExistsTimeout);
-            waitForElement.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(locator));
-            return driver.FindElement(locator);
-        }
-
-        public static IWebElement WaitForElementInteractive(this IWebDriver driver, By locator)
-        {
-            IWebElement element = WaitForElementExists(driver, locator);
-
-            var start = DateTime.Now;
-            while (DateTime.Now < start + DefaultInteractiveTimeout)
-            {
-                Thread.Sleep(50);
-                element = WaitForElementExists(driver, locator);
-                try
-                {
-                    element.SendKeys("");
-                    return element;
-                }
-                catch (ElementNotInteractableException ex)
-                {
-                    Console.WriteLine("error3");
-                }
-            }
-            return (element);
-        }
-
-        public static IWebElement WaitAndSendKeys(this IWebDriver driver, By locator, string text)
-        {
-            IWebElement element = WaitForElementInteractive(driver, locator);
-
-            var start = DateTime.Now;
-            int waitTime = CalculateWaitTime(text.Length, 300);
-            while (DateTime.Now < start + DefaultInteractiveTimeout)
-            {
-                Thread.Sleep(10);
-                element = WaitForElementInteractive(driver, locator);
-                try
-                {
-                    for (int i = 0; i < text.Length; i++)
-                    {
-                        element.SendKeys(text[i].ToString());
-                        Thread.Sleep(waitTime);
-                    }
-                    try
-                    {
-                        element.SendKeys(Keys.Enter);
-                    }
-                    catch (ElementNotInteractableException)
-                    {
-                        Console.WriteLine("Enter key not required");
-                    }
-
-                    return element;
-                }
-                catch (ElementNotInteractableException ex)
-                {
-                    Console.WriteLine("Game did not start");
-                }
-            }
-            return element;
-        }
-
-        public static int CalculateWaitTime(int length, int wpm)
-        {
-            double time = ((wpm * 5) * length) * 60 * 1000;
-
-            return Convert.ToInt32(Convert.ToDouble(length) / time);
         }
     }
 }

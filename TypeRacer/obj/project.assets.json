@@ -319,7 +319,7 @@
           "lib/netstandard2.0/WebDriver.dll": {}
         }
       },
-      "Selenium.WebDriver.ChromeDriver/79.0.3945.3600": {
+      "Selenium.WebDriver.ChromeDriver/81.0.4044.13800": {
         "type": "package",
         "build": {
           "build/Selenium.WebDriver.ChromeDriver.targets": {}
@@ -1839,10 +1839,10 @@
         "selenium.webdriver.nuspec"
       ]
     },
-    "Selenium.WebDriver.ChromeDriver/79.0.3945.3600": {
-      "sha512": "ng2VdpBOI4ciRJpcT7mxgEBU9FGYZ+T7reHdgrqKXoKJtTRZvqKee4qxRPdkBSGxAZKcg9wzgKr3E7YEfacy/Q==",
+    "Selenium.WebDriver.ChromeDriver/81.0.4044.13800": {
+      "sha512": "2b1bjeB0HmTw9wJ41FFcXXRTRMjf0Xm9nrlw1iK6tBTm3Rwqi5+UX9WWaj+lXp8itmmVOKmnYfq49aVDNq281w==",
       "type": "package",
-      "path": "selenium.webdriver.chromedriver/79.0.3945.3600",
+      "path": "selenium.webdriver.chromedriver/81.0.4044.13800",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1850,7 +1850,7 @@
         "driver/linux64/chromedriver",
         "driver/mac64/chromedriver",
         "driver/win32/chromedriver.exe",
-        "selenium.webdriver.chromedriver.79.0.3945.3600.nupkg.sha512",
+        "selenium.webdriver.chromedriver.81.0.4044.13800.nupkg.sha512",
         "selenium.webdriver.chromedriver.nuspec"
       ]
     },
@@ -5204,27 +5204,23 @@
     ".NETCoreApp,Version=v3.1": [
       "DotNetSeleniumExtras.WaitHelpers >= 3.11.0",
       "Selenium.WebDriver >= 3.141.0",
-      "Selenium.WebDriver.ChromeDriver >= 79.0.3945.3600"
+      "Selenium.WebDriver.ChromeDriver >= 81.0.4044.13800"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Dev_CHT\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\traxl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
+      "projectUniqueName": "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
       "projectName": "TypeRacer",
-      "projectPath": "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
-      "packagesPath": "C:\\Users\\Dev_CHT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dev_CHT\\source\\repos\\TypeRacer\\TypeRacer\\obj\\",
+      "projectPath": "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\TypeRacer.csproj",
+      "packagesPath": "C:\\Users\\traxl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\traxl\\Source\\Repos\\christianltraxler\\TypeRacer\\TypeRacer\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Dev_CHT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\traxl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5258,7 +5254,7 @@
           },
           "Selenium.WebDriver.ChromeDriver": {
             "target": "Package",
-            "version": "[79.0.3945.3600, )"
+            "version": "[81.0.4044.13800, )"
           }
         },
         "imports": [
