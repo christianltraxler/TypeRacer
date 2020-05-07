@@ -108,7 +108,7 @@ namespace TypeRacer
 
         public static string GetText(string first, string rest)
         {
-            if (rest[0].ToString() != ",")
+            if (rest[0].ToString() != "," && rest[0].ToString() != " ")
             {
                 // If the first character is not ",", insert space 
                 return(first + " " + rest);
